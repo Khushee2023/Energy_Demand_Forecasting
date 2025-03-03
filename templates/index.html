@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Demand Forecasting</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Energy Demand Forecast</h1>
+            <p class="subtitle">Predict energy consumption patterns for the next 7 days</p>
+        </div>
+
+        <div class="forecast-form">
+            <div class="form-group">
+                <label for="forecast-days">Forecast Period (days):</label>
+                <input type="number" id="forecast-days" name="days" min="1" max="30" value="7">
+            </div>
+            
+            <div class="form-group">
+                <label for="start-date">Start Date (optional):</label>
+                <input type="date" id="start-date" name="start-date">
+            </div>
+            
+            <button id="generate-forecast" class="glow-button">
+                <i class="fas fa-bolt"></i> Generate Forecast
+            </button>
+        </div>
+
+        <div id="loading" class="loading-container hidden">
+            <div class="loading-spinner"></div>
+            <p>Generating forecast...</p>
+        </div>
+
+        <div id="error-message" class="error-message hidden"></div>
+
+        <div id="forecast-results" class="results-container hidden">
+            <div class="results-header">
+                <h2>Forecast Results</h2>
+                <p class="forecast-info">Based on historical usage patterns and time-based features</p>
+            </div>
+
+            <div class="visualization-container">
+                <h3>7-Day Energy Demand Forecast</h3>
+                <div id="forecast-plot" class="plot-container">
+
+                </div>
+            </div>
+            
+            <div class="peak-demand-container">
+                <h3>Peak Demand Predictions</h3>
+                <div id="peak-demand-info" class="peak-demand-grid">
+                   
+                </div>
+            </div>
+            
+            <div class="hourly-data-container">
+                <h3>Hourly Forecast Data</h3>
+                <div class="hourly-data-toggle">
+                    <button id="show-hourly-data" class="toggle-button">Show Hourly Data</button>
+                </div>
+                <div id="hourly-data-table" class="table-container hidden">
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Energy Demand Forecasting Tool - Powered by XGBoost</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
